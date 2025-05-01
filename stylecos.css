@@ -1,0 +1,108 @@
+.carousel-container {
+  width: 100%;
+  max-width: 1600px; /* Plus large pour grands écrans */
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem; /* Espacement entre les cartes */
+  transition: transform 0.5s ease-out;
+}
+
+.carousel-card {
+  flex: 0 0 450px; /* Augmentation de la largeur des cartes */
+  border-radius: 0.75rem;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 350px; /* Augmentation de la hauteur des images */
+  object-fit: cover;
+  display: block;
+  position: relative; /* Nécessaire pour l'effet */
+  z-index: 1;
+  border: 2px solid transparent; /* Réduction de l'épaisseur du bord */
+  border-radius: 0.75rem;
+  animation: neon-border 3s linear infinite; /* Animation néon sur le bord */
+}
+
+/* Animation pour faire circuler le néon autour des bords */
+@keyframes neon-border {
+  0% {
+    border-image-source: linear-gradient(90deg, #00FF00, transparent, #003300, transparent);
+    border-image-slice: 1;
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, #003300, #00FF00, transparent, #003300);
+    border-image-slice: 1;
+  }
+  100% {
+    border-image-source: linear-gradient(90deg, transparent, #003300, #00FF00, transparent);
+    border-image-slice: 1;
+  }
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-button-prev {
+  left: 1rem;
+}
+
+.carousel-button-next {
+  right: 1rem;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.carousel-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 0 0.25rem;
+  background: #d1d5db;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background: #1f2937;
+}
+
+/* Media queries pour adaptabilité */
+@media (max-width: 1024px) {
+  .carousel-card {
+    flex: 0 0 350px; /* Réduction de la largeur pour les écrans moyens */
+  }
+  .carousel-image {
+    height: 300px; /* Réduction de la hauteur pour les écrans moyens */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-card {
+    flex: 0 0 280px; /* Réduction encore plus pour les petits écrans */
+  }
+  .carousel-image {
+    height: 250px; /* Réduction de la hauteur pour les petits écrans */
+  }
+}
